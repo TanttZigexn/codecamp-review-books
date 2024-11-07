@@ -28,6 +28,15 @@ jobs:
         uses: xt0rted/pull-request-comment-branch@v1
         id: comment-branch
 
+      - name: Check if abc.txt exists
+        run: |
+            if [ -f "abc.txt" ]; then
+              echo "abc.txt exists!"
+            else
+              echo "abc.txt does not exist."
+              exit 1  # Hoặc có thể dừng workflow nếu tệp không tồn tại
+            fi
+
       - name: Set latest commit status as pending
         uses: myrotvorets/set-commit-status-action@master
         with:
